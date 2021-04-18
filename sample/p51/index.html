@@ -4,18 +4,21 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sample02</title>
+  <title>P51</title>
   <script src="https://unpkg.com/vue@3.0.0/dist/vue.global.js"></script>
 </head>
 <body>
   <div id="app">
-    <my-title :name="authorName"></my-title>
+    <div>
+      <select v-model="author" multiple>
+        <option value="aaa">aaa</option>
+        <option value="bbb">bbb</option>
+        <option value="ccc">ccc</option>
+      </select>
+    </div>
+    <p>{{ author }}</p>
   </div><!-- app -->
-
-  <script type="text/x-template" id="title-template">
-    <p>{{ upperCaseName }}</p>
-  </script>
-
-  <script src="script.js"></script>
+  <script src="app.js"></script>
 </body> 
 </html>
+

@@ -6,8 +6,8 @@ Vue.createApp({
   },
   methods: {
     onClickCountUp: function(event) {
-      console.log(event.offsetX)
-      this.count += 1;
+      console.log(event)
+      this.count += 1
     }
   }
-}).mount("#app");
+}).mount("#app")
