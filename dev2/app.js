@@ -9,5 +9,11 @@ Vue.createApp({
       searchWord: "", //入力された検索ワード
       order: "desc", //todoの表示順
     }
+  },
+  computed: {
+    // Todoアイテムが作成可能かどうか
+    canCreateTodo: function() {
+      return this.todoTitle !== ""
+    }
   }
 }).mount("#app")
