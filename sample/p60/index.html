@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>P51</title>
+  <script src="https://unpkg.com/vue@3.0.0/dist/vue.global.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div>
+      <input
+        type="checkbox"
+        v-model="todoCategories"
+        value="cate1"
+        id="cate1"
+      >
+      <label for="cate1">cate1</label>
+
+      <input
+        type="checkbox"
+        v-model="todoCategories"
+        value="cate2"
+        id="cate2"
+      >
+      <label for="cate2">cate2</label>
+
+      <input
+        type="checkbox"
+        v-model="todoCategories"
+        value="cate3"
+        id="cate3"
+      >
+      <label for="cate3">cate3</label>
+    </div>
+    <p>{{ joinedToDoCategories }}</p>
+    <p>{{ categoryText }}</p>
+  </div><!-- app -->
+  <script src="app.js"></script>
+</body> 
+</html>
+
