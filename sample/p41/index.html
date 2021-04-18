@@ -8,14 +8,11 @@
   <script src="https://unpkg.com/vue@3.0.0/dist/vue.global.js"></script>
 </head>
 <body>
-  <h1>Sample03</h1> 
-  <h2>@click</h2>
   <div id="app">
-    <div>
-      <button type="button" @click="onClick">todo[1]のタイトルを変更</button>
-      <p>{{ todos }}</p>
+    <input type="text" v-model="message">
+    <textarea v-model="message"></textarea>
   </div><!-- app -->
-
-  <script src="src/js/app.js"></script>
+  <script src="app.js"></script>
 </body> 
 </html>
+

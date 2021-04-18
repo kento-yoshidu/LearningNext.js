@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>P46</title>
+  <script src="https://unpkg.com/vue@3.0.0/dist/vue.global.js"></script>
+</head>
+<body>
+  <div id="app">
+    <input
+      type="checkbox"
+      id="category1"
+      v-model="todoCategory"
+      value="c1"
+    >
+    <label for="category1">cate1</label>
+
+    <input
+      type="checkbox"
+      id="category2"
+      v-model="todoCategory"
+      value="c2"
+    >
+    <label for="category2">cate2</label>
+    <p>{{ todoCategory }}</p>
+  </div><!-- app -->
+  <script src="app.js"></script>
+</body> 
+</html>
+
