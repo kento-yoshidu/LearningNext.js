@@ -13,15 +13,19 @@ h1 {
   margin: 50px auto;
 }
 
-.new-todo {
-  padding: 30px 50px;
+.new-todo,
+.todo-search {
+  margin-bottom: 30px;
+  padding: 10px 50px;
   border: 2px solid #bbb;
   border-radius: 5px;
   .new-todo-item {
     width: 50%;
     margin-bottom: 20px;
-    padding: 15px 20px;
-    border: 1px solid #bbb;
     border-radius: 5px;
+    label {
+      display: inline-block;
+      width: 100px;
+    }
   }
 }
