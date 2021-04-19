@@ -22,6 +22,7 @@
             v-model.trim="todoTitle"
             type="text"
             id="new-todo-title"
+            form="form-todo"
           />
         </div>
 
@@ -29,8 +30,23 @@
           <label for="new-todo-description">説明</label>
           <textarea
             v-model.trim="todoDescription"
-            id="new-todo-description">
-          </textarea>
+            id="new-todo-description"
+            form="form-todo"
+          ></textarea>
+        </div>
+
+        <div class="new-todo-category" style="border: 1px solid #ddd;">
+          <h2>カテゴリ</h2>
+          <form @submit.prevent="createCategory">
+            <input v-model.trim="categoryName" type="text" />
+            <button type="submit">カテゴリを作成</button>
+          </form>
+        </div>
+
+        <div class="new-todo-action">
+          <form id="form-todo" @submit="createTodo">
+            <button type="submit">todoを作成</button>
+          </form>
         </div>
       </div><!-- new-todo -->
 
