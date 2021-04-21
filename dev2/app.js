@@ -4,10 +4,10 @@ Vue.createApp({
       todoTitle: "", //入力されたtodoのタイトル
       todoDescription: "", //入力されたdescription
       todoCategories: [], //todoのカテゴリ
-      selectedCategory: " ", //検索するカテゴリ
+      selectedCategory: "", //検索するカテゴリ
       todos: [], //実際に存在するtodoアイテム
       categories: [], //実際に存在するカテゴリ
-      hideDOneTodo: false, //終了したものも表示させるかの選択
+      hideDoneTodo: false, //終了したものも表示させるかの選択
       searchWord: "", //入力された検索ワード
       order: "desc", //todoの表示順
       categoryName: "", //入力されたカテゴリ名
@@ -33,6 +33,39 @@ Vue.createApp({
 
     hasTodos: function() {
       return this.todos.length > 0
+    },
+
+    resultTodos: function() {
+      const selectedCategory = this.selectedCategory
+      const hideDoneTodo = this.hideDoneTodo
+      const order = this.order
+      const searchWord = this.searchWord
+
+      return this.todos
+        .filter(function (todo) {
+          return (
+            selectedCategory === '' ||
+            todo.categories.indexOf(selectedCategory) !== -1
+          )
+        })
+        .filter(function (todo) {
+          if (hideDoneTodo) {
+            return !todo.done
+          }
+          return true
+        })
+        .filter(function (todo) {
+          return (
+            todo.title.indexOf(searchWord) !== -1 ||
+            todo.description.indexOf(searchWord) !== -1
+          )
+        })
+        .sort(function (a, b) {
+          if (order === 'asc') {
+            return a.dateTime - b.dateTime
+          }
+          return b.dateTime - a.dateTime
+        })
     }
   },
   watch: {
