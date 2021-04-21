@@ -31,10 +31,12 @@ Vue.createApp({
       return this.categories.indexOf(categoryName) !== -1
     },
 
+    // todoにアイテムが登録されているかのチェック
     hasTodos: function() {
       return this.todos.length > 0
     },
 
+    // リストに表示するTodoアイテムを返す
     resultTodos: function() {
       const selectedCategory = this.selectedCategory
       const hideDoneTodo = this.hideDoneTodo
@@ -97,7 +99,7 @@ Vue.createApp({
         done: false,
       })
 
-      //フォームの内容を初期化？
+      //フォームの内容を初期化
       this.todoTitle = "";
       this.todoDescription = "";
       this.todoCategories = "";
@@ -112,6 +114,10 @@ Vue.createApp({
 
       this.categoryName = "";
     },
+
+    deleteTodos: function() {
+      this.todos = [];
+    }
   },
   created: function() {
     const todos = window.localStorage.getItem('todos')
