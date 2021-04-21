@@ -1,36 +1,87 @@
-* {
-  color: #666;
+html {
+  color: #35495E;
+  font-size: 62.5%;
   font-weight: normal;
 }
 
 body {
-  padding-top: 50px;
+  padding-top: 20px;
 }
 
-h1 {
+h1, h2, h3, h4 {
+  color: #41B883;
+  font-weight: 600;
+}
+
+.header .header-title {
+  color: #41B883;
+  font-size: 5rem;
+  font-weight: 100;
   text-align: center;
 }
 
 .main {
-  width: 70%;
-  margin: 50px auto;
+  position: relative;
+  width: 75%;
+  margin: 30px auto;
+  min-height: 100vh;
 }
 
-.new-todo,
-.todo-search {
-  margin-bottom: 30px;
-  padding: 10px 50px;
-  border: 2px solid #bbb;
-  border-radius: 5px;
+.left {
+  border-right: 5px solid #41B883;
+  position: absolute;
+  left: 0;
+  width: 45%;
 }
-.new-todo .new-todo-item,
-.todo-search .new-todo-item {
+
+.todo-list {
+  position: absolute;
+  right: 0;
   width: 50%;
+}
+
+.create-todo,
+.todo-search {
+  padding: 10px 30px;
+  border-left: 3px solid #aaa;
   margin-bottom: 20px;
+}
+.create-todo h2,
+.todo-search h2 {
+  color: #41B883;
+  font-size: 2.5rem;
+}
+.create-todo .new-todo-item,
+.todo-search .new-todo-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
   border-radius: 5px;
 }
-.new-todo .new-todo-item label,
+.create-todo .new-todo-item label,
 .todo-search .new-todo-item label {
-  display: inline-block;
-  width: 100px;
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+}
+.create-todo .new-todo-item label span,
+.todo-search .new-todo-item label span {
+  margin-left: 5px;
+  color: red;
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+.create-todo .new-todo-item input,
+.create-todo .new-todo-item textarea,
+.todo-search .new-todo-item input,
+.todo-search .new-todo-item textarea {
+  border: none;
+  border-bottom: 2px solid #444;
+}
+
+.todo-list {
+  list-style: none;
+}
+
+.no-todo {
+  font-size: 3rem;
 }
