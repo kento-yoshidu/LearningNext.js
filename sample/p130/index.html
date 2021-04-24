@@ -4,28 +4,17 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>P124</title>
+  <title>P130</title>
   <script src="https://unpkg.com/vue@3.0.0/dist/vue.global.js"></script>
 </head>
 <body>
   <div id="app">
-    <count-up-button
-      @count-up="count += 1"
-    ></count-up-button>
+    <count-up-button v-model:count="count"></count-up-button>
     <p>{{ count }}</p>
-
-    <count-up-button2
-      @count-down="count2 -= 1"
-    ></count-up-button2>
-    <p>{{ count2 }}</p>
   </div>
 
   <script type="text/x-template" id="btn-template">
-    <button type="button" @click="$emit('count-up')">COUNT UP</button> 
-  </script>
-
-  <script type="text/x-template" id="btn-template2">
-    <button type="button" @click="$emit('count-down')">COUNT DOWN</button> 
+    <button type="button" @click="onClick">COUNT UP | {{ count }} + 1</button>
   </script>
   <script src="app.js"></script>
 </body> 
