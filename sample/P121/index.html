@@ -4,17 +4,30 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>P115b</title>
+  <title>P121</title>
   <script src="https://unpkg.com/vue@3.0.0/dist/vue.global.js"></script>
 </head>
 <body>
   <div id="app">
-    <my-title name="testTitle"></my-title>
+    <my-title prop="testProp"></my-title>
+
+    <my-num num="101"></my-num>
   </div><!-- app -->
 
-  <script type="text/x-template" id="title-template">
-    <p>{{ upperCase }}</p>
+  <script
+    type="text/x-template"
+    id="title-template"
+  >
+    <h1>{{ title }}</h1>
   </script>
+
+  <script
+    type="text/x-template"
+    id="num-template"
+  >
+    <h1>{{ num }} * 100 = {{ result }}</h1>
+  </script>
+
   <script src="app.js"></script>
 </body> 
 </html>
