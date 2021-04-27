@@ -1,38 +1,75 @@
-Vue.createApp({
-  data: function () {
-    return {
-      todoTitle: '',
-      todoDescription: '',
-      todoCategories: [],
-      selectedCategory: '',
-      todos: [],
-      categories: [],
-      hideDoneTodo: false,
-      searchWord: '',
-      order: 'desc',
-      categoryName: '',
+const todoItem = {
+  template: "#template-todo-item",
+  props: {
+    todo: {
+      type: Object,
+      required: true
+    },
+    done: {
+      type: Boolean,
+      required: true
     }
   },
   computed: {
-    canCreateTodo: function () {
-      return this.todoTitle !== ''
-    },
-    canCreateCategory: function () {
-      return this.categoryName !== '' && !this.existsCategory
-    },
-    existsCategory: function () {
-      const categoryName = this.categoryName
+    hasCategories: function() {
+      return this.todo.categories.length > 0
+    }
+  },
+  methods: {
+    onChangeTodo: function($event) {
+      this.$emit('update:done', $event.target.checked)
+    }
+  }
+}
 
+Vue.createApp({
+  components: {
+    'todo-item': todoItem
+  },
+  data: function(){
+    return {
+      todoTitle: "", //入力されたtodoのタイトル
+      todoDescription: "", //入力されたdescription
+      todoCategories: [], //todoのカテゴリ
+      selectedCategory: "", //検索するカテゴリ
+      todos: [], //実際に存在するtodoアイテム
+      categories: [], //実際に存在するカテゴリ
+      hideDoneTodo: false, //終了したものも表示させるかの選択
+      searchWord: "", //入力された検索ワード
+      order: "desc", //todoの表示順
+      categoryName: "", //入力されたカテゴリ名
+    }
+  },
+  computed: {
+    // Todoアイテムが作成可能かどうか
+    canCreateTodo: function() {
+      // タイトルが空でないこと
+      return this.todoTitle !== ""
+    },
+
+    // カテゴリが作成可能かどうか
+    canCreateCategory: function() {
+      // カテゴリ名が空でないこと、かつ、既に存在していないこと
+      return this.categoryName !== "" && !this.existsCategory
+    },
+    // カテゴリが重複しないかのチェック
+    existsCategory: function() {
+      const categoryName = this.categoryName
       return this.categories.indexOf(categoryName) !== -1
     },
-    hasTodos: function () {
+
+    // todoにアイテムが登録されているかのチェック
+    hasTodos: function() {
       return this.todos.length > 0
     },
-    resultTodos: function () {
+
+    // リストに表示するTodoアイテムを返す
+    resultTodos: function() {
       const selectedCategory = this.selectedCategory
       const hideDoneTodo = this.hideDoneTodo
       const order = this.order
       const searchWord = this.searchWord
+
       return this.todos
         .filter(function (todo) {
           return (
@@ -58,24 +95,24 @@ Vue.createApp({
           }
           return b.dateTime - a.dateTime
         })
-    },
+    }
   },
   watch: {
     todos: {
-      handler: function (next) {
+      handler: function(next) {
         window.localStorage.setItem('todos', JSON.stringify(next))
       },
-      deep: true,
+      deep: true
     },
     categories: {
-      handler: function (next) {
+      handler: function(next) {
         window.localStorage.setItem('categories', JSON.stringify(next))
       },
-      deep: true,
-    },
+      deep: true
+    }
   },
   methods: {
-    createTodo: function () {
+    createTodo: function() {
       if (!this.canCreateTodo) {
         return
       }
@@ -89,30 +126,36 @@ Vue.createApp({
         done: false,
       })
 
-      this.todoTitle = ''
-      this.todoDescription = ''
-      this.todoCategories = []
+      //フォームの内容を初期化
+      this.todoTitle = "";
+      this.todoDescription = "";
+      this.todoCategories = "";
     },
-    createCategory: function () {
+
+    createCategory: function() {
       if (!this.canCreateCategory) {
         return
       }
 
       this.categories.push(this.categoryName)
 
-      this.categoryName = ''
+      this.categoryName = "";
     },
+
+    deleteTodos: function() {
+      this.todos = [];
+    }
   },
-  created: function () {
+  created: function() {
     const todos = window.localStorage.getItem('todos')
     const categories = window.localStorage.getItem('categories')
 
-    if (todos) {
+    if(todos) {
       this.todos = JSON.parse(todos)
     }
 
-    if (categories) {
+    if(categories) {
       this.categories = JSON.parse(categories)
     }
   },
-}).mount('#app')
+}).mount("#app")
