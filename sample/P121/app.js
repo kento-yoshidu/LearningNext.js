@@ -1,39 +1,20 @@
-const myTitle = {
+const myName = {
   props: {
-    prop: {
-      type: String
+    name: {
+      type: String,
+      required: true
     }
-  },
-  data: function () {
-    return {
-      title: this.prop
-    } 
-  },
-  template: "#title-template"
-}
-
-const myNum = {
-  props: {
-    num: {
-      type: Number
-    }
-  },
-  data: function() {
-    return {
-      num: this.num
-    } 
   },
   computed: {
-    result: function() {
-      return this.num * 100 
+    upperName: function() {
+      return this.name.toUpperCase();
     }
   },
-  template: "#num-template"
+  template: "#name-template"
 }
 
 Vue.createApp({
   components: {
-    "my-title": myTitle,
-    "my-num": myNum
+    "my-title": myName
   }
 }).mount("#app")
