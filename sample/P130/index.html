@@ -4,16 +4,19 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>P117</title>
+  <title>P130</title>
   <script src="https://unpkg.com/vue@3.0.0/dist/vue.global.js"></script>
 </head>
 <body>
   <div id="app">
-    <my-title></my-title>
+    <count-up-button v-model:count="count"></count-up-button>
+    <p>{{ count }}</p>
   </div><!-- app -->
 
-  <script type="text/x-template" id="title-template">
-    <h1>{{ title }}</h1>
+  <script type="text/x-template" id="btn-template">
+    <button
+      type="button"
+      @click="onClick">COUNT UP | {{ count }} + {{ count }}</button>
   </script>
   <script src="app.js"></script>
 </body> 
