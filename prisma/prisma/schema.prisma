@@ -33,5 +33,5 @@ model User {
   email   String   @unique
   name    String?
   posts   Post[]
-  Profile Profile?
+  profile Profile?
 }
