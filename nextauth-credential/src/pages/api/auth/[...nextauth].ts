@@ -18,6 +18,7 @@ export default NextAuth({
       },
       authorize: async (credentials, req) => {
         /*
+        DB認証
         const postData = {
           user_code: credentials?.usercode,
           password: credentials?.password,
