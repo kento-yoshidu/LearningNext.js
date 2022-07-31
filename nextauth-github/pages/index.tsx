@@ -4,30 +4,33 @@ import Link from "next/link"
 
 import { useSession, signIn, signOut } from "next-auth/react"
 
+import Main from './components/Main'
+import PageTitle from './components/PageTitle'
+
 const Home: NextPage = () => {
   const { data: session } = useSession()
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
+      <PageTitle pageTitle="HOME" />
 
-      {session ? (
-        <>
-          <h2>{session?.user?.name}さんでログインしています。</h2>
+      <Main>
+        {session ? (
+          <>
+            <h2>{session?.user?.name}さんでログインしています。</h2>
 
-          <p><Link href="/item">アイテム一覧を見る</Link></p>
-          <button onClick={() => signOut()}>ログアウトする</button>
-        </>
-      ) : (
-        <>
-          <h2>まだログインしていません。</h2>
+            <p className="border"><Link href="/item">アイテム一覧を見る</Link></p>
+            <button onClick={() => signOut()}>ログアウトする</button>
+          </>
+        ) : (
+          <>
+            <h2>まだログインしていません。</h2>
 
-          <button onClick={() => signIn()}>Sign in</button>
-          <p><Link href="/item">アイテム一覧を見る</Link></p>
-        </>
-      )}
+            <button onClick={() => signIn()}>Sign in</button>
+            <p><Link href="/item">アイテム一覧を見る</Link></p>
+          </>
+        )}
+      </Main>
     </>
   )
 }

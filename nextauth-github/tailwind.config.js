@@ -5,7 +5,14 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      "wrapper":  ["Helvetica Neue", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo"]
+    },
+    extend: {
+      colors: {
+        "white": "#ffffff"
+      },
+    },
   },
   plugins: [],
 }
