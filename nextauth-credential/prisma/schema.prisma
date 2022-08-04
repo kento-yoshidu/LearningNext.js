@@ -35,3 +35,9 @@ model User {
   posts   Post[]
   profile Profile?
 }
+
+model Book {
+  id Int  @unique
+  title String
+  description String
+}
