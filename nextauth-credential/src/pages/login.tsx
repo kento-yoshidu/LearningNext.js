@@ -1,46 +1,43 @@
-import { useState } from "react";
-import { Button } from "@mui/material";
-import { ReactElement } from "react";
-import { getCsrfToken, signIn } from "next-auth/react";
-import { useRouter } from "next/router";
-import { CtxOrReq } from "next-auth/client/_utils";
-import { useForm } from "react-hook-form";
+import { useState } from "react"
+import { Button } from "@mui/material"
+import { getCsrfToken, signIn } from "next-auth/react"
+import { useRouter } from "next/router"
+import { CtxOrReq } from "next-auth/client/_utils"
+import { useForm } from "react-hook-form"
 
-// POSTリクエスト（サインイン・サインアウトなど）に必要なCSRFトークンを返却する
 export const getServerSideProps = async (context: CtxOrReq | undefined) => {
   return {
     props: {
       title: "login",
       csrfToken: await getCsrfToken(context),
-    },
-  };
-};
+    }
+  }
+}
 
 interface IFormValues {
-  user_code?: string;
-  password?: string;
+  user_code?: string
+  password?: string
 }
 
 const Login = ({ csrfToken }: { csrfToken: string | undefined }) => {
-  const router = useRouter();
-  const [error, setError] = useState("");
-  const { register, handleSubmit } = useForm<IFormValues>();
+  const router = useRouter()
+  const [error, setError] = useState("")
+  const { register, handleSubmit } = useForm<IFormValues>()
+
   const signInUser = async (data: IFormValues) => {
-  // ここで<any>を書かないとtypeエラーが消えなかったので書いています
     await signIn<any>("credentials", {
       redirect: false,
       usercode: data.user_code,
       password: data.password,
-      callbackUrl: `${window.location.origin}`,
+      callbackUrl: `${window.location.origin}`
     }).then((res) => {
       if (res?.error) {
-        setError("UserId,Passwordを正しく入力してください");
+        setError("UserId,Passwordを正しく入力してください")
       } else {
-      // ログイン後に飛ぶページ
-        router.push("/");
+        router.push("/")
       }
-    });
-  };
+    })
+  }
 
   return (
     <div style={{ textAlign: "center" }}>
@@ -58,6 +55,7 @@ const Login = ({ csrfToken }: { csrfToken: string | undefined }) => {
           <input
             type="password"
             placeholder="Password"
+            {...register("password")}
           ></input>
         </div>
         <p>
@@ -76,7 +74,7 @@ const Login = ({ csrfToken }: { csrfToken: string | undefined }) => {
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

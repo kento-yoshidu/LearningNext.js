@@ -9,9 +9,14 @@ const Header = () => {
       <header>
         <h1>header</h1>
 
-        {session?.user?.name && (
+        {session ? (
           <>
-            <h2>{session.user.name}さんでログイン中</h2>
+            <h2>{session?.user?.name}さんでログイン中</h2>
+            <button onClick={() => signOut()}>サインアウト</button>
+          </>
+        ) : (
+          <>
+            <button onClick={() => signIn()} >サインイン</button>
           </>
         )}
       </header>
