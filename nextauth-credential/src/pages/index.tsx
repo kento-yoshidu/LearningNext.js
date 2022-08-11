@@ -1,3 +1,4 @@
+import { signIn } from "next-auth/react"
 import type { NextPage } from "next"
 
 const Home: NextPage = () => (

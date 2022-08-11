@@ -17,13 +17,7 @@ export default NextAuth({
         },
       },
       authorize: async (credentials, req) => {
-        /*
-        DB認証
-        const postData = {
-          user_code: credentials?.usercode,
-          password: credentials?.password,
-        };
-        */
+        console.log({credentials, req})
 
         const user = { id: 1, name: "kento", email: "kento@example.co.jp" }
 
