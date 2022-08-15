@@ -1,0 +1,38 @@
+.main {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  min-width: 400px;
+  padding: 20px;
+}
+.title {
+  font-weight: 700;
+  font-size: 24px;
+  text-align: center;
+}
+.controlGroup {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.label {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+.formControl {
+  margin-top: 2px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  font-size: 16px;
+  height: 40px;
+  padding: 0 10px;
+}
+.buttonGroup {
+  margin-top: 40px;
+}
