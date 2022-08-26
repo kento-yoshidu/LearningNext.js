@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 
-import { useQuery } from '@apollo/client'
-import { POST_QUERY } from './api/gql'
+import "../src/components/SearchResult"
+import { SearchResultField } from '../src/components/SearchResult'
 
 const Home: NextPage = ({ data }) => {
   console.log(data)
@@ -9,17 +9,11 @@ const Home: NextPage = ({ data }) => {
   return (
     <>
       <h1>Next.js</h1>
+
+      <SearchResultField />
     </>
 
   )
 }
 
 export default Home
-
-export const getServerSideProps = () => {
-  const { loading, error, data } = useQuery(POST_QUERY);
-
-  return {
-    props: { data }
-  }
-}
