@@ -18,6 +18,7 @@ const Home: NextPage = () => {
   return (
     <div>
       <img
+        height={300}
         src={data.items[0].volumeInfo.imageLinks.thumbnail}
       />
     </div>
