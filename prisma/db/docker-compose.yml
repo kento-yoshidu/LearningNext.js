@@ -1,0 +1,15 @@
+version: "3.2"
+
+services:
+  db:
+    image: postgres:14-alpine
+    container_name: nextjs_prisma
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: sampledb
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
