@@ -1,10 +1,8 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
 
 const Home: NextPage = () => {
   return (
-    <h1>Next.js with Prisma</h1>
+    <h1>Next.js with Supabase</h1>
   )
 }
 
