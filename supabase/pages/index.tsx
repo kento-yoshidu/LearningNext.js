@@ -2,10 +2,18 @@ import type { NextPage } from 'next'
 import { GetStaticProps } from "next"
 import prisma from "../lib/prisma"
 
-const Home: NextPage = (props) => {
-  console.log(props)
+const Home: NextPage = ({ books }) => {
+  console.log(books)
   return (
-    <h1>Next.js with Supabase</h1>
+    <>
+      {books.map((book) => (
+        <>
+          <h1>{book.title}</h1>
+          <p>{book.isbn}</p>
+          <p>{book.rating}</p>
+        </>
+      ))}
+    </>
   )
 }
 
