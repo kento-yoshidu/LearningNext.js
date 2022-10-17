@@ -13,4 +13,6 @@ datasource db {
 model Post {
   id    Int     @id
   title String
+
+  @@map("books")
 }
