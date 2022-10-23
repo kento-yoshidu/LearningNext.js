@@ -1,10 +1,10 @@
 import prisma from "../../lib/prisma"
+import { NextApiRequest, NextApiResponse } from "next"
 
-const handler = async (req, res) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    await prisma.post.create({
+    const data = await prisma.post.create({
       data: {
-        id: 100,
         title: "test"
       }
     })
@@ -13,11 +13,13 @@ const handler = async (req, res) => {
       ok: true
     })
 
-    return
+    return data
   } catch (err) {
     res.json({
       ok: false, err
     })
+
+    return "error"
   }
 }
 
