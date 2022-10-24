@@ -5,7 +5,8 @@ import prisma from "../lib/prisma"
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
-const CreatePost = ({ result }) => {
+const CreatePost = ({ data }) => {
+  console.log(data)
   return (
     <>
       <h1>create</h1>
@@ -16,10 +17,12 @@ const CreatePost = ({ result }) => {
 export default CreatePost
 
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetServerSideProps = async () => {
   const result = await fetch("http://localhost:3000/api/registerBook")
 
+  const data = JSON.parse(JSON.stringify(result))
+
   return  {
-    props: { result }
+    props: { data }
   }
 }
