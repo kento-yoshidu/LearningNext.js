@@ -5,12 +5,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     await prisma.book.create({
       data: {
-        title: "test"
+        title: req.body.title
       }
     })
 
     res.status(200).json({
-      ok: true
+      data: "OK"
     })
   } catch (err) {
     res.json({
