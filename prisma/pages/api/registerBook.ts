@@ -3,23 +3,19 @@ import { NextApiRequest, NextApiResponse } from "next"
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    const data = await prisma.post.create({
+    await prisma.book.create({
       data: {
         title: "test"
       }
     })
 
-    res.json({
+    res.status(200).json({
       ok: true
     })
-
-    return data
   } catch (err) {
     res.json({
       ok: false, err
     })
-
-    return "error"
   }
 }
 
