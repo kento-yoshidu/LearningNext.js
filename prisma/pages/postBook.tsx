@@ -1,18 +1,53 @@
-const postBook = () => {
+import React from "react"
+import { useRouter } from "next/router"
+
+const PostBook = () => {
+  const router = useRouter()
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    const data = {
+      title: e.target.title.value
+    }
+
+    const JSONdata = JSON.stringify(data)
+
+    const endpoint = '/api/registerBook'
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSONdata
+    }
+
+    const response = await fetch(endpoint, options)
+
+    console.log({ response })
+
+    if (response.ok) {
+      router.push("/")
+    } else {
+      router.push("/error")
+    }
+  }
+
   return (
     <>
       <h1>postBook</h1>
 
-      <form method="POST" action="/api/registerBook">
+      <form onSubmit={handleSubmit}>
         <label htmlFor="title">First name:</label>
         <input type="text" id="title" name="title" />
 
-        <button type="button">Submit</button>
+        <button type="submit">Submit</button>
       </form>
     </>
   )
 }
 
-export default postBook
+export default PostBook
 
 // https://zenn.dev/tiwu_dev/articles/a7ebe4d36e4b74
