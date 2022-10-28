@@ -1,10 +1,10 @@
-import React from "react"
+import React, { ReactSVG } from "react"
 import { useRouter } from "next/router"
 
 const PostBook = () => {
   const router = useRouter()
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault()
 
     const data = {
