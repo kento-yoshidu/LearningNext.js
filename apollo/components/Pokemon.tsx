@@ -1,10 +1,19 @@
 import { useQuery, gql } from "@apollo/client"
 
 const Query = gql `
-  query {
-    pokemon(name: "Pikachu") {
-      id
-      name
+  query getContribution {
+    user(login: "kento-yoshidu") {
+      contributionsCollection {
+        contributionCalendar {
+          totalContributions
+          weeks {
+            contributionDays {
+              date
+              contributionCount
+            }
+          }
+        }
+      }
     }
   }
 `
@@ -25,7 +34,7 @@ const Pokemon = () => {
   }
 
   return (
-    <h1>Pokemon is {data.pokemon.name} !</h1>
+    <h1>成功!</h1>
   )
 }
 
