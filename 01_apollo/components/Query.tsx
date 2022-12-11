@@ -1,6 +1,6 @@
 import { useQuery, gql } from "@apollo/client"
 
-const Query = gql `
+const myQuery = gql `
   query getContribution {
     user(login: "kento-yoshidu") {
       contributionsCollection {
@@ -18,8 +18,8 @@ const Query = gql `
   }
 `
 
-const Pokemon = () => {
-  const { data, loading, error } = useQuery(Query)
+const Query = () => {
+  const { data, loading, error } = useQuery(myQuery)
 
   if (loading) {
     return (
@@ -38,4 +38,4 @@ const Pokemon = () => {
   )
 }
 
-export default Pokemon
+export default Query

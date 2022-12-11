@@ -1,21 +1,6 @@
-# Next.js & Prisma
+# Learning Next.js
 
-## 環境
+## 01_apollo
 
-- Next.js 12
-- TypeScript 
-
-## Next.jsとTypeScriptのインストール
-
-`yarn init -y`で初期化します。
-
-```$ yarn init -y
-yarn init v1.22.10
-Done in 0.05s.
-```
-
-`npx create-next-app@latest --ts my-app`でNext.jsをインストールします。
-
-
-
+apollo clientを使ってGitHub APIからデータ取得。エラーハンドリングも実装
 

@@ -1,11 +1,11 @@
 import type { NextPage } from 'next'
 
-import Pokemon from '../components/Pokemon'
+import Query from '../components/Query'
 
 const Home: NextPage = () => {
   return (
     <>
-      <Pokemon />
+      <Query />
     </>
   )
 }
