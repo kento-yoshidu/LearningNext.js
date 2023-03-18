@@ -3,7 +3,6 @@ import "@testing-library/jest-dom/extend-expect"
 import userEvent from "@testing-library/user-event"
 import { getPage } from "next-page-tester"
 import { initTestHelpers } from "next-page-tester"
-import { async } from "rxjs"
 
 initTestHelpers()
 
