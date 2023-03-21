@@ -15,7 +15,6 @@ describe('Navigation by Link', () => {
 
     userEvent.click(screen.getByTestId('blog-nav'))
     expect(await screen.findByText('Blog Page')).toBeInTheDocument()
-    // screen.debug()
 
     userEvent.click(screen.getByTestId("comment-nav"))
     expect(await screen.findByText('Comment Page')).toBeInTheDocument()

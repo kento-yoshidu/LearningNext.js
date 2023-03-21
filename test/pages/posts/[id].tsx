@@ -2,11 +2,11 @@ import Link from "next/link";
 import Layout from "../../components/layout";
 
 import { getAllPostIds, getPostData } from "../../lib/fetch";
-import type { Post } from "../../types/types";
+import type { POST } from "../../types/types";
 
 import { GetStaticProps, GetStaticPaths } from "next";
 
-const PostDetail = ({ id, title, body}: Post) => {
+const PostDetail = ({ id, title, body}: POST) => {
   return (
     <Layout title={title}>
       <p className="m-4">
