@@ -2,6 +2,7 @@ type Props = {
   name: string;
   onSubmit?: (event: React.FormEvent<HTMLFormElement>) => void;
 };
+
 export const Form = ({ name, onSubmit }: Props) => {
   return (
     <form
